@@ -12,7 +12,7 @@ app.post('/webhook/saweria', (req, res) => {
 		id: b.id || (Date.now() + "_" + Math.random()), // buat dedupe di Roblox
 		username: String(b.donator_name || "Anonim").trim(), // donatur isi username Roblox di kolom "Nama"
 		message: String(b.message || "").trim(),
-		amount: Number(b.amount) || 0, // rupiah
+		amount: Number(b.amount_raw ?? b.amount) || 0, // rupiah (Saweria kirim "amount_raw")
 		time: Date.now(),
 	});
 	res.status(200).send("OK");
