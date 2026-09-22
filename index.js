@@ -7,6 +7,7 @@ let queue = [];
 
 // Daftarin URL ini di dashboard Saweria: Pengaturan > Webhook
 app.post('/webhook/saweria', (req, res) => {
+	console.log('RAW BODY DARI SAWERIA:', JSON.stringify(req.body));
 	const b = req.body;
 	queue.push({
 		id: b.id || (Date.now() + "_" + Math.random()), // buat dedupe di Roblox
